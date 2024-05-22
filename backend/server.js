@@ -25,17 +25,27 @@ app.get("/init", async (req, res) => {
   });
 });
 
+//List of All Transactions
+app.get("/alltransactions/:month", async (req, res) => {
+  const data = await monthData(req.params.month);
+  const { search, page } = req.query;
+  const filter = data.filter(
+    (product) =>
+      product.title.toLowerCase().includes(search.toLowerCase()) ||
+      product.description.toLowerCase().includes(search.toLowerCase()) ||
+      product.price.toString().toLowerCase().includes(search.toLowerCase())
+  );
 
-//List of All Transactions 
-app.get("/alltransactions/:month", async (req,res)=>{
-const data = await monthData(req.params.month);
+  const pages = filter.length / 10;
 
-res.json({data})
+  res.json({
+    keyword: search,
+    page: page,
+    total: data.length,
+    searchItems: filter.length,
+    allProducts: filter,
+  });
 });
-
-
-
-
 
 // statistics
 app.get("/statistics/:month", async (req, res) => {
@@ -116,27 +126,6 @@ app.get("/piechart/:month", async (req, res) => {
 
   res.json({ categoryList, categories, data });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(process.env.PORT, () => {
   console.log(`http://localhost:${process.env.PORT}`);
