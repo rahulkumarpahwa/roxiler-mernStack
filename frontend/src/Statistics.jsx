@@ -11,7 +11,7 @@ const Statistics = () => {
     const response = await fetch(`http://localhost:3000/statistics/${month}`);
     const json = await response.json();
     setData(json);
-    console.log(json);
+    // console.log(json);
   };
 
   return (

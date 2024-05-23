@@ -79,40 +79,50 @@ app.get("/statistics/:month", async (req, res) => {
 //bar chart
 app.get("/barchart/:month", async (req, res) => {
   const data = await monthData(req.params.month);
-  const priceRange = {
-    "0-100": 0,
-    "101-200": 0,
-    "201-300": 0,
-    "301-400": 0,
-    "401-500": 0,
-    "501-600": 0,
-    "601-700": 0,
-    "701-800": 0,
-    "801-900": 0,
-    "901-above": 0,
-  };
+  const priceRange = [
+    { "0-100": 0, item: 0, year: "0-100" },
+    { "101-200": 0, item: 0, year: "101-200" },
+    { "201-300": 0, item: 0, year: "201-300" },
+    { "301-400": 0, item: 0, year: "301-400" },
+    { "401-500": 0, item: 0, year: "401-500" },
+    { "501-600": 0, item: 0, year: "501-600" },
+    { "601-700": 0, item: 0, year: "601-700" },
+    { "701-800": 0, item: 0, year: "701-800" },
+    { "801-900": 0, item: 0, year: "801-900" },
+    { "901-above": 0, item: 0, year: "901-above" },
+  ];
 
   data.forEach((product) => {
     if (product.price >= 0 && product.price <= 100) {
-      priceRange["0-100"] += 1;
+      priceRange[0]["0-100"] += 1;
+      priceRange[0].item +=1;
     } else if (product.price >= 101 && product.price <= 200) {
-      priceRange["101-200"] += 1;
+      priceRange[1]["101-200"] += 1;
+      priceRange[1].item += 1;
     } else if (product.price >= 201 && product.price <= 300) {
-      priceRange["201-300"] += 1;
+      priceRange[2]["201-300"] += 1;
+      priceRange[2].item += 1;
     } else if (product.price >= 301 && product.price <= 400) {
-      priceRange["301-400"] += 1;
+      priceRange[3]["301-400"] += 1;
+      priceRange[3].item += 1;
     } else if (product.price >= 401 && product.price <= 500) {
-      priceRange["401-500"] += 1;
+      priceRange[4]["401-500"] += 1;
+      priceRange[4].item += 1;
     } else if (product.price >= 501 && product.price <= 600) {
-      priceRange["501-600"] += 1;
+      priceRange[5]["501-600"] += 1;
+      priceRange[5].item += 1;
     } else if (product.price >= 601 && product.price <= 700) {
-      priceRange["601-700"] += 1;
+      priceRange[6]["601-700"] += 1;
+      priceRange[6].item += 1;
     } else if (product.price >= 701 && product.price <= 800) {
-      priceRange["701-800"] += 1;
+      priceRange[7]["701-800"] += 1;
+      priceRange[7].item += 1;
     } else if (product.price >= 801 && product.price <= 900) {
-      priceRange["801-900"] += 1;
+      priceRange[8]["801-900"] += 1;
+      priceRange[8].item += 1;
     } else if (product.price >= 901) {
-      priceRange["901-above"] += 1;
+      priceRange[9]["901-above"] += 1;
+      priceRange[9].item += 1;
     }
   });
 
