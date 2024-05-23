@@ -4,6 +4,15 @@ require("dotenv").config();
 const Product = require("./models/productModel.js");
 const connectDB = require("./dbConfig/dbConfig.js");
 const monthData = require("./utils/monthData.js");
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: ["http://localhost:1234", "http://localhost:5173"],
+    methods: ["GET"],
+    credentials: true,
+  })
+);
 
 connectDB();
 
