@@ -8,7 +8,7 @@ const monthData = require("./utils/monthData.js");
 connectDB();
 
 app.get("/", (req, res) => {
-  res.json({ message: "server is started", success: true });
+  return res.json({ message: "server is started", success: true });
 });
 
 //initiating Data
@@ -19,7 +19,7 @@ app.get("/init", async (req, res) => {
   const jsonData = await data.json();
   await Product.deleteMany({}); //to empty the database first
   const newProductsData = await Product.insertMany(jsonData);
-  res.json({
+  return res.json({
     message: "Products Data has been initialised in MongoDB",
     productData: newProductsData,
   });
@@ -38,7 +38,7 @@ app.get("/alltransactions/:month", async (req, res) => {
 
   const pages = filter.length / 10;
 
-  res.json({
+  return res.json({
     keyword: search,
     page: page,
     total: data.length,
@@ -58,7 +58,7 @@ app.get("/statistics/:month", async (req, res) => {
   //items sold and unsold
   const soldItems = data.filter((product) => product.sold === true).length;
   const notSoldItems = data.length - soldItems;
-  res.json({
+  return res.json({
     month: req.params.month,
     totalAmount,
     soldItems,
@@ -107,7 +107,7 @@ app.get("/barchart/:month", async (req, res) => {
     }
   });
 
-  res.json({ totalProducts: data.length, priceRange, data });
+  return res.json({ totalProducts: data.length, priceRange, data });
 });
 
 //pie chart
@@ -124,7 +124,24 @@ app.get("/piechart/:month", async (req, res) => {
     categoryList.push(obj);
   });
 
-  res.json({ categoryList, categories, data });
+  return res.json({ categoryList, categories, data });
+});
+
+//combined api
+app.get("/combined/:month", async (req, res) => {
+  const month = req.params.month;
+  const response1 = await fetch(`${process.env.URL}/statistics/${month}`);
+  const resJson1 = await response1.json();
+  const response2 = await fetch(`${process.env.URL}/barchart/${month}`);
+  const resJson2 = await response2.json();
+  const response3 = await fetch(`${process.env.URL}/piechart/${month}`);
+  const resJson3 = await response3.json();
+
+  return res.json([
+    { Statistics: resJson1 },
+    { BarChart: resJson2 },
+    { PieChart: resJson3 },
+  ]);
 });
 
 app.listen(process.env.PORT, () => {
