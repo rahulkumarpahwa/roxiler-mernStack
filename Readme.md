@@ -1,5 +1,6 @@
 # Introduction :
-Hi! My name is Rahul Kumar. I am MERN Stack developer. This project is given to me by [Roxiler](https://www.roxiler.com/). This project has three sections : 
+Hi! My name is Rahul Kumar. I am MERN Stack developer. This project is given to me by [Roxiler](https://www.roxiler.com/). This project has three sections : a. Transaction Dashboard  b. Statistics   c. Bar Charts Statistics.
+Other than that I also has created the APIs for the different type of transactions. 
 
 # Features : 
 This project has following features based upon the sections : 
