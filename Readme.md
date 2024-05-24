@@ -22,4 +22,11 @@ This project has following features based upon the sections :
 2. You can change the month as well.
 3. On hovering each bar, you will get the value of it.
 
+# Usage : 
+You get the project follow the steps below:
+1. You get the project initiated get install any IDE and then setup the GIT and GITHUB on it.
+2. After that write `git clone https://github.com/rahulkumarpahwa/roxiler-mernStack.git` in the terminal of the IDE.
+3. Now the app will get download to your system and then open two terminals. In the first one move to frontend folder by typing `cd frontend` and in the other go to backend by typing `cd backend`.
+4. After moving to these type `npm run dev` in the both and then both frontend and backend will start.
+5. Now go to `http://localhost:5173/` in any browser of your. You will see the project.
 
