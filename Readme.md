@@ -53,6 +53,15 @@ Now follow the following to get data from different routes :
 }`
 
 2. To GET LIST OF ALL THE TRANSACTIONS go to `http://localhost:3000/alltransactions/**month-number**?page=**page-number**&item=**number-of-items-in-page**&search=**item-you-want-to-search**` 
+Make sure to Enter the following as :
+  a. month number (say for march it is 03)
+  b. page, page number you want to see.
+  c. item, no. of items on a page you want to see.
+  d. search, the keyword you want to search.
+
+3. 
+
+
 
 # Note :
 
