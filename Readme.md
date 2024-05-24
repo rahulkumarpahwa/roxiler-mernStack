@@ -39,7 +39,7 @@ You get the project follow the steps below:
 
 # Usage to See all the API's :
 
-After following the above till step 4, go to `http://localhost:3000/` in any browser. You will get :
+After following the above till step 4 then, go to `http://localhost:3000/` in any browser. You will get :
 `{
     "message": "server is started",
     "success": true
@@ -52,7 +52,7 @@ Now follow the following to get data from different routes :
     productData: newProductsData,
 }`
 
-2.
+2. To GET LIST OF ALL THE TRANSACTIONS go to `http://localhost:3000/alltransactions/**<month-number>**?page=**<page-number>**&item=**<number-of-items-in-page>**&search=**<item-you-want-to-search>**` 
 
 # Note :
 
