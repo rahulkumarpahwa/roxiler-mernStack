@@ -16,7 +16,7 @@ const BarGraph = () => {
     const response = await fetch(`http://localhost:3000/barchart/${month}`);
     const json = await response.json();
     setChartData(json);
-    console.log(json);
+    // console.log(json);
   };
 
   return (

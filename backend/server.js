@@ -37,7 +37,10 @@ app.get("/init", async (req, res) => {
 //List of All Transactions
 app.get("/alltransactions/:month", async (req, res) => {
   const data = await monthData(req.params.month);
-  const { search, page } = req.query;
+  const { search } = req.query;
+  const page = parseInt(req.query.page);
+  const item = parseInt(req.query.item);
+
   const filter = data.filter(
     (product) =>
       product.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -45,10 +48,16 @@ app.get("/alltransactions/:month", async (req, res) => {
       product.price.toString().toLowerCase().includes(search.toLowerCase())
   );
 
-  const pages = filter.length / 10;
+  const totalPages = Math.ceil(filter.length / item);
+  const startIndex = (page - 1) * item;
+  const endIndex = page * item;
+  const paginatedData = filter.slice(startIndex, endIndex);
 
   return res.json({
+    totalPages,
+    paginatedData,
     keyword: search,
+    item,
     page: page,
     total: data.length,
     searchItems: filter.length,
@@ -95,7 +104,7 @@ app.get("/barchart/:month", async (req, res) => {
   data.forEach((product) => {
     if (product.price >= 0 && product.price <= 100) {
       priceRange[0]["0-100"] += 1;
-      priceRange[0].item +=1;
+      priceRange[0].item += 1;
     } else if (product.price >= 101 && product.price <= 200) {
       priceRange[1]["101-200"] += 1;
       priceRange[1].item += 1;

@@ -4,17 +4,21 @@ const TransactionTable = () => {
   const [data, setData] = useState();
   const [month, setMonth] = useState("03");
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const [item, setItem] = useState(2);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     fetchData();
-  }, [month,search]);
+  }, [month, search, page, item]);
   const fetchData = async () => {
     const response = await fetch(
-      `http://localhost:3000/alltransactions/${month}?page=12&search=${search}`
+      `http://localhost:3000/alltransactions/${month}?page=${page}&item=${item}&search=${search}`
     );
     const json = await response.json();
     setData(json);
-    // console.log(json);
+    console.log(json);
+    setTotalPages(json.totalPages);
   };
 
   return (
@@ -59,7 +63,7 @@ const TransactionTable = () => {
         </div>
       </div>
 
-      <div className="my-8 mx-4 p-4 text-neutral-200  font-semibold">
+      <div className="mt-8 mx-4 p-4 text-neutral-200  font-semibold">
         <table>
           <thead>
             <tr>
@@ -74,8 +78,8 @@ const TransactionTable = () => {
           </thead>
           <tbody>
             {data != undefined &&
-              data.allProducts.length != 0 &&
-              data.allProducts.map((item) => (
+              data.paginatedData.length != 0 &&
+              data.paginatedData.map((item) => (
                 <tr key={item._id}>
                   <td className="border-2 p-2">{item.id}</td>
                   <td className="border-2 p-2">{item.title}</td>
@@ -86,13 +90,64 @@ const TransactionTable = () => {
                   <td className="border-2 p-2">
                     {" "}
                     <div className="w-20">
-                      <img src={item.image} className="rounded-lg w-full" alt="" />
+                      <img
+                        src={item.image}
+                        className="rounded-lg w-full"
+                        alt=""
+                      />
                     </div>
                   </td>
                 </tr>
               ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="flex items-center justify-center gap-80 my-8">
+        <div>
+          <label htmlFor="page">Page No.- </label>
+          <input
+            id="page"
+            type="number"
+            value={page}
+            onChange={(e) => {
+              setPage(e.target.value);
+            }}
+            className="text-center rounded-lg border-2 border-[#f8df8c] text-black w-20"
+          />
+        </div>
+
+        <div className="flex items-center justify-center gap-10">
+          <button
+            onClick={() => {
+              setPage(page >= totalPages ? page : page + 1);
+            }}
+            className="border-2  px-3 rounded-xl hover:bg-[#f8df8c]"
+          >
+            Next
+          </button>
+          <button
+            onClick={() => {
+              setPage(page === 1 ? page : page - 1);
+            }}
+            className="border-2  px-3 rounded-xl hover:bg-[#f8df8c]"
+          >
+            Previous
+          </button>
+        </div>
+
+        <div>
+          <label htmlFor="item">Per Page - </label>
+          <input
+            id="item"
+            type="number"
+            value={item}
+            onChange={(e) => {
+              setItem(e.target.value);
+            }}
+            className="text-center rounded-lg border-2 border-[#f8df8c] text-black w-20"
+          />
+        </div>
       </div>
     </div>
   );
