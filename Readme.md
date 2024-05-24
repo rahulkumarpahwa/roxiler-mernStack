@@ -52,16 +52,17 @@ Now follow the following to get data from different routes :
     productData: newProductsData,
 }`
 
-2. To GET LIST OF ALL THE TRANSACTIONS go to `http://localhost:3000/alltransactions/**month-number**?page=**page-number**&item=**number-of-items-in-page**&search=**item-you-want-to-search**` 
-Make sure to Enter the following as :
-  - month number (say for march it is 03)
-  - page, page number you want to see.
-  - item, no. of items on a page you want to see.
-  - search, the keyword you want to search.
+2. To GET LIST OF ALL THE TRANSACTIONS go to `http://localhost:3000/alltransactions/**month-number**?page=**page-number**&item=**number-of-items-in-page**&search=**item-you-want-to-search**`
+   Make sure to Enter the following as :
 
-3. To GET THE STATISTICS go to `http://localhost:3000/statistics/**month-number**` and you will get the 
-response as :
-`{
+- month number (say for march it is 03)
+- page, page number you want to see.
+- item, no. of items on a page you want to see.
+- search, the keyword you want to search.
+
+3. To GET THE STATISTICS go to `http://localhost:3000/statistics/**month-number**` and you will get the
+   response as :
+   `{
     "month": "01",
     "totalAmount": 6530.9,
     "soldItems": 2,
@@ -70,7 +71,7 @@ response as :
 }`
 
 4. To GET THE BARCHART STATISTICS go to `http://localhost:3000/barchart/**month-number**` and you will get the response as :
-`{
+   `{
     "totalProducts": 6,
     "priceRange": [
         {
@@ -127,9 +128,9 @@ response as :
     "data": [ { ...}, {...} , {...},...],
 }`
 
-5. To GET THE PIE CHART DATA go to `http://localhost:3000/piechart/**month-number**` and you will get the 
-response as :
-`{
+5. To GET THE PIE CHART DATA go to `http://localhost:3000/piechart/**month-number**` and you will get the
+   response as :
+   `{
     "categoryList": [
         {
             "category": "electronics",
@@ -152,9 +153,9 @@ response as :
     "data": [ { ...}, {...} , {...},...],
 }`
 
-6. To GET THE COMBINED DATA go to `http://localhost:3000/combined/**month-number**` and you will get the 
-response as :
- `[
+6. To GET THE COMBINED DATA go to `http://localhost:3000/combined/**month-number**` and you will get the
+   response as :
+   `[
     {
         "Statistics": {
             "month": "01",
@@ -163,105 +164,123 @@ response as :
             "notSoldItems": 4,
             "monthData": [ { ...}, {...} , {...},...],
         }`,
-    }, 
-    {
-        "BarChart": {
-            "totalProducts": 6,
-            "priceRange": [
-                {
-                    "0-100": 1,
-                    "item": 1,
-                    "year": "0-100"
-                },
-                {
-                    "101-200": 1,
-                    "item": 1,
-                    "year": "101-200"
-                },
-                {
-                    "201-300": 1,
-                    "item": 1,
-                    "year": "201-300"
-                },
-                {
-                    "301-400": 0,
-                    "item": 0,
-                    "year": "301-400"
-                },
-                {
-                    "401-500": 0,
-                    "item": 0,
-                    "year": "401-500"
-                },
-                {
-                    "501-600": 2,
-                    "item": 2,
-                    "year": "501-600"
-                },
-                {
-                    "601-700": 0,
-                    "item": 0,
-                    "year": "601-700"
-                },
-                {
-                    "701-800": 0,
-                    "item": 0,
-                    "year": "701-800"
-                },
-                {
-                    "801-900": 0,
-                    "item": 0,
-                    "year": "801-900"
-                },
-                {
-                    "901-above": 1,
-                    "item": 1,
-                    "year": "901-above"
-                }
-            ],
-            "data": [ { ...}, {...} , {...},...],
-        },
-    },
-    {
-      "PieChart": {
-            "categoryList": [
-                {
-                    "category": "electronics",
-                    "count": 2
-                },
-                {
-                    "category": "women's clothing",
-                    "count": 2
-                },
-                {
-                    "category": "men's clothing",
-                    "count": 2
-                }
-            ],
-            "categories": [
-                "electronics",
-                "women's clothing",
-                "men's clothing"
-            ],
-            "data": [ { ...}, {...} , {...},...],
-    },
-    },
- ]`
+   },
+   {
+   "BarChart": {
+   "totalProducts": 6,
+   "priceRange": [
+   {
+   "0-100": 1,
+   "item": 1,
+   "year": "0-100"
+   },
+   {
+   "101-200": 1,
+   "item": 1,
+   "year": "101-200"
+   },
+   {
+   "201-300": 1,
+   "item": 1,
+   "year": "201-300"
+   },
+   {
+   "301-400": 0,
+   "item": 0,
+   "year": "301-400"
+   },
+   {
+   "401-500": 0,
+   "item": 0,
+   "year": "401-500"
+   },
+   {
+   "501-600": 2,
+   "item": 2,
+   "year": "501-600"
+   },
+   {
+   "601-700": 0,
+   "item": 0,
+   "year": "601-700"
+   },
+   {
+   "701-800": 0,
+   "item": 0,
+   "year": "701-800"
+   },
+   {
+   "801-900": 0,
+   "item": 0,
+   "year": "801-900"
+   },
+   {
+   "901-above": 1,
+   "item": 1,
+   "year": "901-above"
+   }
+   ],
+   "data": [ { ...}, {...} , {...},...],
+   },
+   },
+   {
+   "PieChart": {
+   "categoryList": [
+   {
+   "category": "electronics",
+   "count": 2
+   },
+   {
+   "category": "women's clothing",
+   "count": 2
+   },
+   {
+   "category": "men's clothing",
+   "count": 2
+   }
+   ],
+   "categories": [
+   "electronics",
+   "women's clothing",
+   "men's clothing"
+   ],
+   "data": [ { ...}, {...} , {...},...],
+   },
+   },
+   ]`
 
+# Tech Stack :
 
- # Tech Stack :
- Frontend  :  
- 1. React
- 2. React DOM
- 3. Vite 
- 4. Chart.js
- 5. TailwindCSS 
+Frontend :
 
- Backend : 
- 1. Express
- 2. Mongoose 
- 3. Cors
- 4. DotEnv
+1.  React
+2.  React DOM
+3.  Vite
+4.  Chart.js
+5.  TailwindCSS
+
+Backend :
+
+1.  Express
+2.  Mongoose
+3.  Cors
+4.  DotEnv
+
+# Things which I can improve in Future :
+
+1. Adding Header, Footer and About Page for Frontend.
+2. Error Handing for Frontend & Backend.
+3. Making components more modular.
+4. Making more Responsive.
+5. Creating Routes for Frontend and Backend.
+
+# Screenshot :
+
+![](./assets/transactionDashboard.png)
+
+![](./assets/statistics.png)
+
+![](./assets/barchart.png)
 
 # Note :
 
