@@ -163,7 +163,8 @@ response as :
             "notSoldItems": 4,
             "monthData": [ { ...}, {...} , {...},...],
         }`,
-    },{
+    }, 
+    {
         "BarChart": {
             "totalProducts": 6,
             "priceRange": [
@@ -220,7 +221,8 @@ response as :
             ],
             "data": [ { ...}, {...} , {...},...],
         },
-    },{
+    },
+    {
       "PieChart": {
             "categoryList": [
                 {
