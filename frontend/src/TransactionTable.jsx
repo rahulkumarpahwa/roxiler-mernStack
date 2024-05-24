@@ -27,7 +27,7 @@ const TransactionTable = () => {
         Transaction Dashboard
       </div>
 
-      <div className="flex items-center justify-center gap-80 my-4">
+      <div className="flex items-center justify-center gap-60 my-4">
         <input
           type="text"
           placeholder="Search Transaction"
@@ -37,6 +37,9 @@ const TransactionTable = () => {
           }}
           className="text-center rounded-lg border-2 border-[#f8df8c] text-black w-[20rem]"
         />
+        <div className="text-white font-semibold text-xl">
+          Total Transaction - <span className="bg-white rounded-lg text-black px-2">{data != undefined ? data.total : ""}</span>{" "}
+        </div>
         <div className="">
           <select
             className="border-2 border-[#f8df8c] rounded-lg text-center w-[10rem]"
