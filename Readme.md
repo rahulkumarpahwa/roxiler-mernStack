@@ -52,7 +52,7 @@ Now follow the following to get data from different routes :
     productData: newProductsData,
 }`
 
-2. To GET LIST OF ALL THE TRANSACTIONS go to `http://localhost:3000/alltransactions/**<month-number>**?page=**<page-number>**&item=**<number-of-items-in-page>**&search=**<item-you-want-to-search>**` 
+2. To GET LIST OF ALL THE TRANSACTIONS go to `http://localhost:3000/alltransactions/**month-number**?page=**page-number**&item=**number-of-items-in-page**&search=**item-you-want-to-search**` 
 
 # Note :
 
