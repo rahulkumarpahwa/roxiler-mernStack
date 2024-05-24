@@ -30,3 +30,10 @@ You get the project follow the steps below:
 4. After moving to these type `npm run dev` in the both and then both frontend and backend will start.
 5. Now go to `http://localhost:5173/` in any browser of your. You will see the project.
 
+# Usage to See all the API's :
+After following the above till step 4, go to `http://localhost:3000/` in any browser. You will get :
+`{
+    "message": "server is started",
+    "success": true
+}`
+
